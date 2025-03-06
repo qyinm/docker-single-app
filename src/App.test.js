@@ -9,6 +9,6 @@ test('renders learn react link', () => {
 
 test('renders learn react link', () => {
   const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
+  const linkElement = getByText(/Update Docker React test/i);
   expect(linkElement).toBeInTheDocument();
 })
