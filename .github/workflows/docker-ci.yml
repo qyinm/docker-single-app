@@ -9,7 +9,7 @@ on:
 # 실행할 작업 정의
 jobs:
   build:
-    runs-on: ubuntu-latest  # Ubuntu 환경에서 실행
+    runs-on: ubuntu-latest # Ubuntu 환경에서 실행
     steps:
       # 1. 리포지토리 코드 체크아웃
       - name: Checkout code
@@ -39,6 +39,8 @@ jobs:
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           application_name: docker-test-1
           environment_name: Docker-test-1-env
-          version_label: 12345
+          # version_label: 12345
+          # use_existing_version_if_available: true  # 이 줄을 추가하세요
+          version_label: ${{github.sha}}
           region: ap-northeast-2
           deployment_package: deploy.zip
