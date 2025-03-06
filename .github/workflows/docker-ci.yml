@@ -26,6 +26,12 @@ jobs:
       # 4. 테스트 실행 (프로젝트에 맞게 수정 필요)
       - name: Run tests
         run: docker run -e CI=true coffebin/docker-react-app npm test
+        
+      # 5. 배포 파일 압축 (deploy.zip 생성)
+      - name: Create deployment package
+        run: zip -r deploy.zip .
+
+      # 6. Elastic Beanstalk에 배포
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v22
         with:
