@@ -1,0 +1,28 @@
+name: Docker CI
+
+# 언제 실행할지 정의 (main 브랜치에 푸시할 때)
+on:
+  push:
+    branches:
+      - main
+
+# 실행할 작업 정의
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Ubuntu 환경에서 실행
+    steps:
+      # 1. 리포지토리 코드 체크아웃
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # 2. Docker Buildx 설정 (고급 빌드 기능 사용)
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      # 3. Docker 이미지 빌드
+      - name: Build Docker image
+        run: docker build -t coffebin/docker-react-app .
+
+      # 4. 테스트 실행 (프로젝트에 맞게 수정 필요)
+      - name: Run tests
+        run: docker run coffebin/docker-react-app npm test
