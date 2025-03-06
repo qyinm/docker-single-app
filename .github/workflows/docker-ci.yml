@@ -33,7 +33,6 @@ jobs:
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           application_name: docker-react-app
           environment_name: Docker-react-app-env
-          existing_bucket_name: elasticbeanstalk-ap-northeast-2-143866718244
           version_label: 12345
           region: ap-northeast-2
           deployment_package: deploy.zip
